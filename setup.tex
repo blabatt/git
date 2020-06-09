@@ -1,0 +1,102 @@
+\section{Setup}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git config}
+Manipulate configuration settings.\\
+\code{git config --system <cfg>} \# in /etc/gitconfig \\
+\code{git config --global <cfg>} \# in \textasciitilde /.gitconfig \\
+\code{git config --local<cfg>} \# in \textasciitilde .git/config \\
+\# where <cfg> is <key> <value>, for example: \\
+\code{git config --global core.editor vim} \\
+\code{git config <key>} \# query value \\
+\code{git config --list} \# show all cfgs \\
+\code{git config --list --show-origin} \# cfg origin\\
+\# Creating aliases:\\
+\code{git config --global alias.<als> <cmd>} \\
+\code{git config alias.l log --oneline} \# examples \\
+\code{git config --global alias.unstage \textquotesingle reset HEAD -- \textquotesingle} \\
+\# Simplify long commands: \\
+\code{git config --local remote.pushDefault origin} \\
+Run \code{man git-config} for more config options.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git help}
+\code{git help <cmd>} \# general inquiry \\
+\code{git help config} \# eg: help on \say{config} \\
+\code{git <cmd> -h} \# abridged help \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git init}
+Start new git repository locally. \\
+\$ \code{mkdir ~/Projects/moustrap} \# create \\
+\$ \code{cd ~/Projects/moustrap} \# relocate \\
+\$ \code{vim innovation.rs} \# innovate \\
+\code{git init} \# track \\
+Create a central hub repo, ie one you can push to that lacks a working dir: \\
+\$ \code{mkdir ~/Projects/central} \# create \\
+\$ \code{cd ~/Projects/central} \# relocate \\
+\code{git init --bare} \# no working dir.\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git clone}
+Grab \& track an existing, remote git repository. \\
+\code{git clone <url>} \# store locally in \textbackslash \\
+\code{git clone <url> <name>} \# set local <name> \\
+\code{git clone <url> -o <name>} \# set remote name\\
+\code{git clone --bare <url>} \# no working dir \\
+\code{git clone ssh://[user@]server/project.git} \# SSH\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{.gitignore}
+Pattern matching rules:
+\begin{itemize}
+    \item comment out line with \code{\#}
+    \item standard globs  (\code{*}, \code{?}) work recursively
+    \item avoid recursion by prefacing with \code{\textbackslash}
+    \item match directory recursion by \code{**}
+    \item specify directory by suffixing with \code{\textbackslash}
+    \item negate a pattern with \code{!}
+    \item case matching with \code{[abc]} or \code{[a-c]}
+\end{itemize}
+For example: \\
+(file) \code{*.a} \# ignore all *.a \\
+(file) \code{!lib.a} \# do track lib.a \\
+(file) \code{/TODO} \# ignore top-level /TODO\\
+(file) \code{build/} \# ignore anything under build/ \\
+(file) \code{doc/*.txt} \# ignore doc txt's \\
+(file) \code{doc/**/*.pdf} \# ignore all pdf's \\
+.gitignore\textquotesingle s in sub-dirs overwrite higher ones.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Key Management}
+\code{ssh-keygen -o} \# create pub/prv key pair\\
+\code{cat \textasciitilde/.ssh/id\_rsa.pub} \# view pub key\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Server Administration}
+There are several ways to serve git (and cons):
+\begin{enumerate}
+    \item The local filesystem (no redundancy)
+    \item An SSH server (cumbersome user admin)
+    \item GIT protocol (no user admin possible)
+    \item \say{Smart} HTTP (complex web server)
+    \item Self-hosting, eg GitLab (time to set up)
+    \item Commercial hosting, eg Github (money)
+\end{enumerate}
+
+\# Set up remote access SSH server:\\
+\code{mkdir .ssh \&\& chmod 700 .ssh \&\& /}\\
+\code{touch .ssh/authorized\_keys \&\& /}\\
+\code{chmod 600 /ssh/authorized\_keys}\\
+\# Allow jack access to ssh user:\\
+\code{cat /tmp/id\_rsa.jack.pub >> /} \\
+\code{\textasciitilde/.ssh/authorized\_keys} \\
+\# Set up Git-protocol server:\\
+\code{git daemon --reuseaddr <path>}\\
+\code{cd prj\_path/ \&\& touch git-daemon-export-ok}\\

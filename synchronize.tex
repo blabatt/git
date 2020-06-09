@@ -1,0 +1,81 @@
+\section{Share \& Synchronize}
+Major sync work-flows:
+\begin{itemize}
+    \item Centralized -- any can push to a shared bare
+    \item Managed -- only manager can push
+    \item Hierarchical -- multiple levels of pushing
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git fetch}
+\code{git fetch <remote>} \# download latest \\
+\code{git fetch <remote> <refspec>} \# specific rqst \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git push}
+Only works if: \begin{itemize}[partopsep=0pt,topsep=0pt,parsep=0pt]
+    \item you have write access to <to>
+    \item no on has pushed since your last fetch
+\end{itemize}
+If 2\textsuperscript{nd} condition isn\textquotesingle t true, it is an attempted push of \say{non-fast-forward} changes.\\
+\code{git push <to> <from>} \# generally \\
+\code{git push origin master} \# specifically \\
+\code{git push -u origin my\_brn} \# set remote \& push\\
+\code{git push <refspec>} \# eg, frombrn:tobrn \\
+Push message includes a statement like:\\
+\code{  1edee6b..fbff5bc  master -> master}\\
+ie, <oldref>..<newref> <frombr> -> <tobr>\\
+Pushes on rebased branches require forcing:\\
+\code{git push -f myfork brnA} \# \underline{f}orce
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git pull}
+\code{git pull} \# git fetch + git merge \\
+\code{git pull <url>} \# one-time: don\textquotesingle t set remote\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git update}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git remote}
+\code{git remove -v} \# show all remotes \\
+\code{git remote add [<nickname>?] <url>} \# add \\
+\code{git remote show <remote>} \# inquire \\
+\code{git remote rename <old> <new>} \# new alias \\
+\code{git remote rm} \# no longer track remote \\
+\code{git remote set-head} \# \\
+\code{git remote prune} \# \\
+\code{git remote set-branches} \# \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git request-pull}
+Absent GitHub forks \& pull-requests, use this to facilitate the integration process. (A fork is just a clone to or push to an accessible repo.)
+\code{git request-pull origin/master myfork} \# text\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{GitHub}
+Generally, pull requests don't close right away.  
+The idea is to open, collaborate, \& finally merge. Use markdown to reference IDs \& prettify:
+{\scriptsize
+\begin{itemize}
+    \item \code{\#<id>} reference branch, commit, or PR
+    \item \code{username\#<refid>} more specifically
+    \item \code{username/rep\#<id>} or externally
+    \item \code{<SHA1>} unchanging, concretely
+    \item \code{:<emo>:} enter an emoji
+    \item \code{[X] item A [] item B} or checklist
+    \item \code{java```if(true) a=b;```} code snippet
+    \item \code{> whan that aprile} block quote
+\end{itemize}}
+
+\say{Trackback} event is then created in referenced 
+conversation.
+% \code{} \# \\
+\ \\

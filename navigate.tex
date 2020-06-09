@@ -1,0 +1,95 @@
+\section{Ancestry}
+
+
+\newcommand{\CommonElementTextFormat}[2]% #1=index, #2=text
+{\raisebox{16pt}{\makebox[1em][l]{\footnotesize #1}}%
+\parbox[l][4em]{14em}{\footnotesize%
+ \vfil{#2}\vfil
+}\hspace*{1em}}
+
+
+\resizebox{60mm}{!}{
+\begin{tikzpicture}[
+  box/.style={align=center,fill=white,anchor=center,draw=blue,},
+  node distance=3mm,
+]
+
+\node[box](A) at (4,1){A};
+\node[box,above left=of A](B){B};
+\node[box,above right=of A](C){C};
+\node[box,above=of B](E){E};
+\node[box,above left=of B](D){D};
+\node[box,above=of C](F){F};
+\node[box,above left=of F](I){I};
+\node[box,above right=of F](J){J};
+\node[box,above left=of D](G){G};
+\node[box,above right=of D](H){H};
+\node[](label) at (2,1.5) {\large older};
+\draw[->] (label.north) -- +(0,.5);
+
+\path [draw,thick] (A) -- (B);
+\path [draw,thick] (A) -- (C);
+\path [draw,thick] (B) -- (D);
+\path [draw,thick] (B) -- (E);
+\path [draw,thick] (B) -- (F);
+\path [draw,thick] (C) -- (F);
+\path [draw,thick] (D) -- (G);
+\path [draw,thick] (D) -- (H);
+\path [draw,thick] (F) -- (I);
+\path [draw,thick] (F) -- (J);
+
+\node[](test3) at (8.5,3){\CommonElementTextFormat{}{\Large \textasciitilde\# is \#\textsuperscript{th} ancestor; \\[3mm] \textasciicircum \# is either: \\ 1 - merge into or \\ 2 - merge from}};
+
+\end{tikzpicture} }
+
+Complex exclusions: \\
+\code{git log \textasciicircum <ref>} \# synonym for --not\\
+\code{git log brA brB \textasciicircum brC} \# from A or B not C \\
+
+
+\subsection*{Paths}
+
+{\scriptsize
+\begin{tabular}{l l l l}
+    A &                       & A\textasciicircum 0  \\
+    B & A\textasciicircum     & A\textasciicircum 1   & A\textasciitilde 1 \\  
+    C & A\textasciicircum 2   & A\textasciicircum 2 \\
+    D & A\textasciicircum\textasciicircum     & A\textasciicircum1\textasciicircum1   & A\textasciitilde 2 \\
+    E & B\textasciicircum 2   & A\textasciicircum\textasciicircum 2 \\
+    F & B\textasciicircum 3   & A\textasciicircum\textasciicircum 3 \\
+    G & A\textasciicircum\textasciicircum\textasciicircum & A\textasciicircum 1\textasciicircum 1\textasciicircum 1     & A\textasciitilde 3  \\
+    H & D\textasciicircum 2   & B\textasciicircum\textasciicircum 2   & A\textasciicircum\textasciicircum\textasciicircum 2  \\
+    I & F\textasciicircum   & B\textasciicircum 3\textasciicircum   & A\textasciicircum\textasciicircum 3\textasciicircum   \\
+    J & F\textasciicircum 2     & \textasciicircum 3\textasciicircum 2  & A\textasciicircum\textasciicircum 3\textasciicircum 2  \\
+\end{tabular}}
+
+\subsection*{Ranges}
+
+{\scriptsize
+\begin{tabular}{l l l}
+    Args & Expanded & Selected  \\
+    D & &                           G H D \\
+    D F & &                         G H I J D F \\
+    \textasciicircum G D & &                        H D \\
+    \textasciicircum D B & &                        E I J F B \\
+    \textasciicircum D B C & &                      E I J F B C \\
+    C & &                           I J F C \\
+    B..C &      = \textasciicircum B C &            C \\
+    B...C &     = B \textasciicircum F C &          G H D E B C \\
+    B\textasciicircum - &       = B\textasciicircum ..B \\
+    &           = \textasciicircum B\textasciicircum 1 B &            E I J F B \\
+    C\textasciicircum @ &       = C\textasciicircum 1 \\
+    &           = F                 I J F \\
+    B\textasciicircum @ &       = B\textasciicircum 1 B\textasciicircum 2 B\textasciicircum 3 \\
+    &           = D E F &           D G H E F I J \\
+    C\textasciicircum ! &       = C \textasciicircum C\textasciicircum @ \\
+    &           = C \textasciicircum C\textasciicircum 1 \\
+    &           = C \textasciicircum F &            C \\
+    B\textasciicircum ! &       = B \textasciicircum B\textasciicircum @ \\
+    %&           = B \textasciicircum B\textasciicircum 1 \textasciicircum B\textasciicircum 2 \textasciicircum B\textasciicircum 3 \\ 
+    &           = B \textasciicircum D \textasciicircum E \textasciicircum F &      B \\
+    F\textasciicircum ! D &     = F \textasciicircum I \textasciicircum J D &       G H D F \\
+\end{tabular}}
+
+
+\ \\

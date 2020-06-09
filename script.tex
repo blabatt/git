@@ -1,0 +1,37 @@
+\section{Scripting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Hooks}
+\textbf{Client Side} Pre and post- events like commit, push, etc, git can run script in .git/hooks/ directory.  These are excluded from version control.
+\textbf{Server Side} Similar to client side, but are included in pushes, and used to implement controlled team processes.
+\textbf{GitHub} Upon <event> (often a push), GitHub emits an HTTP post to indicated url.  The server listening there can parse, interpret \& act according to arbitrary logic. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Github API}
+GET a public HTTP \underline{e}nd \underline{p}oint like this:\\
+\code{git curl <EP>} \# basic api GET request \\
+Or authenticate (token or OAuth) then POST: \\
+\code{curl -H \textquotedbl ContentType: application/json \textquotedbl  \textbackslash }\\
+\phantom{xxxx} \code{-H \textquotedbl Authorization: token TOK \textquotedbl  \textbackslash}\\
+\phantom{xxxx} \code{--data '<json>' \ <EP>} 
+
+Top level end-points:
+\begin{multicols}{2}
+\scriptsize
+\begin{itemize}
+    \item activity
+    \item data
+    \item gists
+    \item actions
+    \item interactions
+    \item issues
+    \item organizations
+    \item projects
+    \item PRs
+    \item reactions
+    \item teams
+    \item users
+\end{itemize}
+\end{multicols}
+\ \\

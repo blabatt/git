@@ -1,0 +1,77 @@
+\section{Branch}
+Types of commits:
+\begin{itemize}
+    \item initial commit ... no parent
+    \item normal commit ... one parent
+    \item merge commit ... multiple parents
+\end{itemize}
+Types of branches:
+\begin{itemize}
+    \item \say{Long-running} branches
+    \item \say{Topic} branches
+    \item \say{Tracking} branches
+\end{itemize}
+Types of history:
+\begin{itemize}
+    \item Original, unedited (3-way merges)
+    \item Curated, linearized (rebase, cherry-pick)
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git branch}
+\code{git branch -v} \# show branches \\
+\code{git branch -vv} \# show tracking branches \\
+\code{git branch --merged} \# end-of-road branches \\
+\code{git branch --no-merged} \# show WIP branches \\
+\code{git branch <bname>} \# new branch @ HEAD \\
+\code{git branch -d <branch>} \# delete \\
+\# Set upstream branch:\\
+\code{git branch -u <remote>/<branch>} \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git checkout}
+A checkout moves HEAD point \& changes the contents of the working directory.  
+You cannot checkout a branch that clashes with changes in your working directory.
+
+\code{git checkout <branch>} \# move HEAD \\
+\code{git checkout -b <bname>} \# create \& checkout \\
+\# Create remote tracking branch:\\
+\code{git checkout -b <name> <remote>/<branch>} \\
+\code{git checkout --track <remote>/<branch>} \\
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git merge}
+\code{git merge <branch> [<into>]} \# * assumed \\
+A merge is three-way, generally, but a two-way \say{fast-forward} when <branch> is a direct ancestor of <into>.\\ 
+\code{git merge @\{u\}} \# shorthand for upstream \\
+\code{git mergetool} \# visual conflict-resolution \\
+\code{git merge --squash brnA} \# single parent \\ 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git rebase}
+Rebasing replays changes from one line of work onto another in the order they were introduced.  
+Only rebase if it\textquotesingle s the project's convention to do so and if you want to clean up your clutter. \textbf{Never rebase anything you've pushed} (although it's technically still okay if no one else will base their work on those commits).\\
+\# Rebase <topic> onto <base>:\\ 
+\code{git rebase <base> <topic>} \# general form \\
+\# Now, <base> is fast-forwardable:\\
+\code{git checkout <base>; git merge <topic>}\\
+\code{git rebase master} \# rebase * onto master\\
+\# Rebase c onto a, holding off on b: \\
+\code{git rebase --onto <a> <b> <c>} \\
+\# Split, squash, edit, reorder commits: \\
+\code{git rebase -i ...} \# \underline{i}nteractive \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git merge-base}
+Finds common ancestor:\\
+\code{git merge-base brn master} \# find \\
+\code{git diff \$\{git merge-base brn master\}} \# use \\
+\code{git diff master...brn} \# shorthand for above \\
+
+%\code{} \# \\

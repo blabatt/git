@@ -1,0 +1,98 @@
+\section{Observe}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git status}
+\code{git status} \# show w-dir vs index \\
+\code{git status -s} \# short-hand view \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git diff}
+\code{git diff} \# wd vs repo \\
+\code{git diff --staged} \# idx vs repo \\
+\code{git difftool} \# use a different diff \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git log}
+\code{git log} \# \\
+\code{git log -p} \# shows $\Delta$\textquotesingle s (\say{patches})\\
+\code{git log -3} \# last 3 \\
+\code{git log --stat} \# include summary info \\
+\code{git log --graph} \# graphical \\
+\code{git log --decorate --all} \# show branching \\
+\code{git log --pretty=oneline} \# beautiful \\
+\code{git log --pretty=format:\textquotedbl <fmt>\textquotedbl } \# format
+\begin{multicols}{2}[]
+\scriptsize
+\begin{itemize}[topsep=0mm]
+    \item \%H commit hash
+    \item \%h abbrev. hash
+    \item \%T Tree hash
+    \item \%t abbrev. tree
+    \item \%P parent hashes
+    \item \%p abbrev. prnt
+    \item \%an author name
+    \item \%ae auth. email
+    \item \%ad auth. date
+    \item \%ar relative date
+    \item \%cn commiter name
+    \item \%ce commit. email
+    \item \%cd commit date
+    \item \%cr relative date
+    \item \%s subject
+\end{itemize}
+\end{multicols}
+Subselect \& bracked logs to show:\\
+\code{git log --since=<date>} \# bracket low \\
+\code{git log --since=2.weeks} \# for example \\
+\code{git log --until=<date>} \# bracket high \\
+\code{git log --author=<auth>} \# by author \\
+\code{git log --grep <pattrn>} \# matching pattern \\
+\code{git log --S <str>} \# \say{pickaxe} option \\
+\code{git log brnA..brnB} \# only brnB, $\neg$ brnA \\
+\code{git log --not brnA brnB} \# same as above \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git describe}
+Create version \# from latest tag:\\
+\code{git describe master} \# yields v1.6-<SHA1>\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git shortlog}
+\code{git shortlog master --not v1.5} \# since 1.5\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git grep}
+\begin{itemize}
+    \item -p ... enclosing block
+    \item -e <str> ... exists string
+    \item --and ... complex matches
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git blame}
+\code{git blame <file>} \# show last $\Delta$s, authors\\
+\code{git blame -L 51,59 <file>} \# restrict to line \#s\\
+\code{git blame -C <file>} \# find $\Delta$-origins, other files\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git reflog}
+\code{git reflog} \# local history of HEAD, branches \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git show}
+\code{git show master@\{5\}} \# using reflog labels \\
+\code{git show master@\{yesterday\}} \# special labels \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git bisect}
+Iteratively search for breaking $\Delta$s by repeatedly resetting old commits. Is a commit good or bad?\\
+\code{git bisect start HEAD v1.0} \# from 1.0 to HEAD\\
+
+
+% \code{} \# \\

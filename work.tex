@@ -1,0 +1,91 @@
+\section{Work}
+Terminology \& state machine: \\
+{\scriptsize
+\begin{tabular}{l l l l}
+    State & Index & W-Dir & Next \\ 
+    \hline
+    Untracked & ? & ? & Add \\
+    Unmodified & - & - & Edit \\
+    Modified & - & M & Stage \\
+    Staged & [A|M] & [M]? & Commit \\
+\end{tabular}
+}\\
+You can \code{rm} from \say{untracked} or \code{git rm} from any other state.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git reset}
+Reset moves HEAD's branch \& HEAD, versus checkout, which only moves HEAD.  Below, <ref> $\in$ \{SHA1, branch, file path\}:\\
+\code{git reset <ref>} \# move HEAD bch \& idx to ref\\ 
+\code{git reset --mixed <ref>} \# equiv to above\\
+\code{git reset --soft <ref>} \# Move HEAD brch $\neg$ idx\\
+\code{git reset --hard} \# revert WD, idx \& brch \\
+\# Only the --hard option is dangerous to WD.\\
+\# Revert specific file in working directory:\\
+\code{git reset <file>} \# file in WD $\Delta$s to last HEAD\\
+\code{git reset <SHA> <file>} \# revert to specific SHA \\
+\code{git checkout -- <file>} \# \say{unsafely} revert file \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git add}
+\code{git add <filename>} \# add to index\\
+\code{git add .} \# stage all changed\\
+\code{git add --all} \# stage all\\
+\code{git add -i} \# interactive staging \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git commit}
+\code{git commit -m 'message'} \# commit all staged \\
+\code{git commit -am 'message'} \# commit all tracked \\
+\code{git commit -a --amend} \# redo last commit \\
+\code{git commit --amend} \# tweak last commit \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git tag}
+\code{git tag} \# show tags \\
+\code{git tag -l} \# same as above\\
+\code{git tag -l <tag\_ref>} \# show all matches \\
+\code{git tag \textquotedbl <str>\textquotedbl} \# create \say{lightweight} tag \\
+\code{git tag -a <str> -m \textquotedbl <str>\textquotedbl} \# \say{annotated} tag \\
+\code{git tag -a <tag> <hash>} \# after-the-fact tag \\
+\# using tags:\\
+\code{git show <tag>} \# display commit @ <tag>\\
+\code{git checkout <tag>} \# checkout tagged commit \\
+\# remote tags:\\
+\code{git push origin <tag>} \# explicit push required \\
+\code{git push <remote> --tags} \# push all tags \\
+\# deleting tags: \\
+\code{git tag -d <tag>} \# delete locally \\
+\code{git push <remote> --delete <tag>} \# remotely \\
+\# sign tags (must disseminate pub key): \\
+\code{git tag -s v1.5} \# sign\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git rm}
+\code{git rm <file>} \# stage <file>'s removal \\
+\code{git rm -f <file>} \# remove modified / staged \\
+\code{git rm --cached <file>} \# untrack \\
+Can use globs instead of filenames:\\
+\code{git rm \textbackslash*~} \# anything ending in \textasciitilde \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git mv}
+\code{git mv <old> <new>} \# rename to <new>\\
+This is shorthand for:\\
+\$ \code{git rm \_; mv \_ \_; git add \_} \\
+on a tracked file.\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git stash}
+\code{git stash push} \# \\
+\code{git stash list} \# \\
+\code{git stash apply} \# \\
+\code{git stash drop} \# remove from stack \\
+\code{git stash pop} \# apply \& drop last \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git cherry-pick}
+Like a rebase for a single commit. Can cherry-pick multiple commits into one prior to integration, or cherry-pick single commit onto master instead of rebasing. \\
+\code{git cherry-pick <SHA1>} \# \\
+
+% \code{} \# \\
