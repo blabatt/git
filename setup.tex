@@ -4,20 +4,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git config}
 Manipulate configuration settings.\\
-\code{git config --system <cfg>} \# in /etc/gitconfig \\
-\code{git config --global <cfg>} \# in \textasciitilde /.gitconfig \\
-\code{git config --local<cfg>} \# in \textasciitilde .git/config \\
+\code{git config -{}-system <cfg>} \# in /etc/gitconfig \\
+\code{git config -{}-global <cfg>} \# in \textasciitilde /.gitconfig \\
+\code{git config -{}-local<cfg>} \# in \textasciitilde .git/config \\
 \# where <cfg> is <key> <value>, for example: \\
-\code{git config --global core.editor vim} \\
+\code{git config -{}-global core.editor vim} \\
 \code{git config <key>} \# query value \\
-\code{git config --list} \# show all cfgs \\
-\code{git config --list --show-origin} \# cfg origin\\
+\code{git config -{}-list} \# show all cfgs \\
+\code{git config -{}-list -{}-show-origin} \# cfg origin\\
 \# Creating aliases:\\
-\code{git config --global alias.<als> <cmd>} \\
-\code{git config alias.l log --oneline} \# examples \\
-\code{git config --global alias.unstage \textquotesingle reset HEAD -- \textquotesingle} \\
+\code{git config -{}-global alias.<als> <cmd>} \\
+\code{git config alias.l log -{}-oneline} \# examples \\
+\code{git config -{}-global alias.unstage \textquotesingle reset HEAD -{}- \textquotesingle} \\
 \# Simplify long commands: \\
-\code{git config --local remote.pushDefault origin} \\
+\code{git config -{}-local remote.pushDefault origin} \\
 Run \code{man git-config} for more config options.\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,7 +37,7 @@ Start new git repository locally. \\
 Create a central hub repo, ie one you can push to that lacks a working dir: \\
 \$ \code{mkdir ~/Projects/central} \# create \\
 \$ \code{cd ~/Projects/central} \# relocate \\
-\code{git init --bare} \# no working dir.\\
+\code{git init -{}-bare} \# no working dir.\\
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,7 +46,7 @@ Grab \& track an existing, remote git repository. \\
 \code{git clone <url>} \# store locally in \textbackslash \\
 \code{git clone <url> <name>} \# set local <name> \\
 \code{git clone <url> -o <name>} \# set remote name\\
-\code{git clone --bare <url>} \# no working dir \\
+\code{git clone -{}-bare <url>} \# no working dir \\
 \code{git clone ssh://[user@]server/project.git} \# SSH\\
 
 
@@ -69,7 +69,6 @@ For example: \\
 (file) \code{build/} \# ignore anything under build/ \\
 (file) \code{doc/*.txt} \# ignore doc txt's \\
 (file) \code{doc/**/*.pdf} \# ignore all pdf's \\
-.gitignore\textquotesingle s in sub-dirs overwrite higher ones.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,5 +97,5 @@ There are several ways to serve git (and cons):
 \code{cat /tmp/id\_rsa.jack.pub >> /} \\
 \code{\textasciitilde/.ssh/authorized\_keys} \\
 \# Set up Git-protocol server:\\
-\code{git daemon --reuseaddr <path>}\\
+\code{git daemon -{}-reuseaddr <path>}\\
 \code{cd prj\_path/ \&\& touch git-daemon-export-ok}\\

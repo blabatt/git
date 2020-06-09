@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git diff}
 \code{git diff} \# wd vs repo \\
-\code{git diff --staged} \# idx vs repo \\
+\code{git diff -{}-staged} \# idx vs repo \\
 \code{git difftool} \# use a different diff \\
 
 
@@ -18,11 +18,11 @@
 \code{git log} \# \\
 \code{git log -p} \# shows $\Delta$\textquotesingle s (\say{patches})\\
 \code{git log -3} \# last 3 \\
-\code{git log --stat} \# include summary info \\
-\code{git log --graph} \# graphical \\
-\code{git log --decorate --all} \# show branching \\
-\code{git log --pretty=oneline} \# beautiful \\
-\code{git log --pretty=format:\textquotedbl <fmt>\textquotedbl } \# format
+\code{git log -{}-stat} \# include summary info \\
+\code{git log -{}-graph} \# graphical \\
+\code{git log -{}-decorate -{}-all} \# show branching \\
+\code{git log -{}-pretty=oneline} \# beautiful \\
+\code{git log -{}-pretty=format:\textquotedbl <fmt>\textquotedbl } \# format
 \begin{multicols}{2}[]
 \scriptsize
 \begin{itemize}[topsep=0mm]
@@ -44,14 +44,14 @@
 \end{itemize}
 \end{multicols}
 Subselect \& bracked logs to show:\\
-\code{git log --since=<date>} \# bracket low \\
-\code{git log --since=2.weeks} \# for example \\
-\code{git log --until=<date>} \# bracket high \\
-\code{git log --author=<auth>} \# by author \\
-\code{git log --grep <pattrn>} \# matching pattern \\
-\code{git log --S <str>} \# \say{pickaxe} option \\
+\code{git log -{}-since=<date>} \# bracket low \\
+\code{git log -{}-since=2.weeks} \# for example \\
+\code{git log -{}-until=<date>} \# bracket high \\
+\code{git log -{}-author=<auth>} \# by author \\
+\code{git log -{}-grep <pattrn>} \# matching pattern \\
+\code{git log -{}-S <str>} \# \say{pickaxe} option \\
 \code{git log brnA..brnB} \# only brnB, $\neg$ brnA \\
-\code{git log --not brnA brnB} \# same as above \\
+\code{git log -{}-not brnA brnB} \# same as above \\
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,14 +61,14 @@ Create version \# from latest tag:\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git shortlog}
-\code{git shortlog master --not v1.5} \# since 1.5\\
+\code{git shortlog master -{}-not v1.5} \# since 1.5\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git grep}
 \begin{itemize}
     \item -p ... enclosing block
     \item -e <str> ... exists string
-    \item --and ... complex matches
+    \item -{}-and ... complex matches
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

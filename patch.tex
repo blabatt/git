@@ -3,8 +3,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Partial changes}
-Use --patch with: git [add|reset|checkout|stash]: \\
-\code{git add --patch} \# interactive patch staging
+Use -{}-patch with: git [add|reset|checkout|stash]: \\
+\code{git add -{}-patch} \# interactive patch staging
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git format-patch}
@@ -21,7 +21,7 @@ past indicated branch (here origin/master): \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git [apply|am]}
-Use former if user submitted diff format \say{patch}, the latter if user submitted format-patch formatted patches.  Latter is better: already contains commit metadata.
+{\footnotesize Use former if user submitted diff format \say{patch}; latter if user submitted format-patch patches.  Latter is better: already contains commit metadata.}\\
 \code{git apply /tmp/pname.patch}\\
 \code{git am pname.patch}\\
 \code{git am -3 pname.patch} \# attempt 3-way merge\\
