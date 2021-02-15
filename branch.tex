@@ -32,10 +32,11 @@ Types of history:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git checkout}
 {\footnotesize
-A checkout moves HEAD point \& changes the contents of the working directory.  You cannot checkout a branch that clashes with changes in your working directory.}
+A checkout moves HEAD to a named branch or SHA commit.  You cannot checkout a branch that clashes with changes in your working directory.}
 
 \code{git checkout <branch>} \# move HEAD \\
 \code{git checkout -b <bname>} \# create \& checkout \\
+\code{git switch -c <bname>} \# ibid, \href{https://stackoverflow.com/questions/3965676/why-did-my-git-repo-enter-a-detached-head-state}{new in v2.23}\\
 \# Create remote tracking branch:\\
 \code{git checkout -b <name> <remote>/<branch>} \\
 \code{git checkout -{}-track <remote>/<branch>} \\
