@@ -14,30 +14,47 @@ You can \code{rm} from \say{untracked} or \code{git rm} from any other state.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git reset}
-Reset moves HEAD's branch \& HEAD, versus checkout, which only moves HEAD.  Below, <ref> $\in$ \{SHA1, branch, file path\}:\\
+\textit{Reset moves HEAD's branch \& HEAD, \href{https://stackoverflow.com/questions/3639342/whats-the-difference-between-git-reset-and-git-checkout}{versus checkout}, which only moves HEAD.  Below, <ref> $\in$ \{SHA1, branch, file path\}:}\\
 \code{git reset <ref>} \# move HEAD bch \& idx to ref\\ 
 \code{git reset -{}-mixed <ref>} \# equiv to above\\
 \code{git reset -{}-soft <ref>} \# Move HEAD brch $\neg$ idx\\
-\code{git reset -{}-hard} \# revert WD, idx \& brch \\
-\# Only the -{}-hard option is dangerous to WD.\\
-\# Revert specific file in working directory:\\
+\code{git reset -{}-hard} \# revert WD, idx \& brch \\[2mm]
+\textit{Only the -{}-hard option is dangerous to WD. Revert specific file in working directory:}\\
 \code{git reset <file>} \# file in WD $\Delta$s to last HEAD\\
 \code{git reset <SHA> <file>} \# revert to specific SHA \\
 \code{git checkout -{}- <file>} \# \say{unsafely} revert file \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\href{https://git-scm.com/docs/git-revert\#_examples}{git revert}}
+
+\textit{Append a \href{https://stackoverflow.com/questions/19032296/how-to-use-git-revert}{new commit} to history with contents of an older one. \code{git revert} is \href{https://stackoverflow.com/questions/8358035/whats-the-difference-between-git-revert-checkout-and-reset}{unrelated} to \code{restore} or \code{reset}. To get \ul{rid} of \code{HEAD}'s content:} \\
+\code{git revert HEAD}
+% \code{} \# \\
+% \code{} \# \\
+% \code{} \# \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{git restore}
+\textit{\href{https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things}{Safe way} to restore old file version:}\\
+\code{git restore CONTRIBUTING.md} \# \textit{from HEAD} \\
+\code{git restore -{}-staged CONTRIBUTING.md} \# \textit{from idx}
+% \code{} \# \\
+% \code{} \# \\
+% \code{} \# \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git add}
 \code{git add <filename>} \# add to index\\
 \code{git add .} \# stage all changed\\
 \code{git add -{}-all} \# stage all\\
-\code{git add -i} \# interactive staging \\
+\code{git add -i} \# interactive staging
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git commit}
 \code{git commit -m 'message'} \# commit all staged \\
 \code{git commit -am 'message'} \# commit all tracked \\
 \code{git commit -a -{}-amend} \# redo last commit \\
-\code{git commit -{}-amend} \# tweak last commit \\
+\code{git commit -{}-amend} \# tweak last commit 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git tag}
@@ -57,7 +74,7 @@ Reset moves HEAD's branch \& HEAD, versus checkout, which only moves HEAD.  Belo
 \code{git tag -d <tag>} \# delete locally \\
 \code{git push <remote> -{}-delete <tag>} \# remotely \\
 \# sign tags (must disseminate pub key): \\
-\code{git tag -s v1.5} \# sign\\
+\code{git tag -s v1.5} \# sign
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git rm}
@@ -65,14 +82,14 @@ Reset moves HEAD's branch \& HEAD, versus checkout, which only moves HEAD.  Belo
 \code{git rm -f <file>} \# remove modified / staged \\
 \code{git rm -{}-cached <file>} \# untrack \\
 Can use globs instead of filenames:\\
-\code{git rm \textbackslash*~} \# anything ending in \textasciitilde \\
+\code{git rm \textbackslash*~} \# anything ending in \textasciitilde
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git mv}
 \code{git mv <old> <new>} \# rename to <new>\\
 This is shorthand for:\\
 \$ \code{git rm \_; mv \_ \_; git add \_} \\
-on a tracked file.\\
+on a tracked file.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,11 +98,11 @@ on a tracked file.\\
 \code{git stash list} \# \\
 \code{git stash apply} \# \\
 \code{git stash drop} \# remove from stack \\
-\code{git stash pop} \# apply \& drop last \\
+\code{git stash pop} \# apply \& drop last
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git cherry-pick}
 Like a rebase for a single commit. Can cherry-pick multiple commits into one prior to integration, or cherry-pick single commit onto master instead of rebasing. \\
-\code{git cherry-pick <SHA1>} \# \\
+\code{git cherry-pick <SHA1>} \#
 
 % \code{} \# \\

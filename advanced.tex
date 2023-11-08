@@ -18,7 +18,8 @@
 \# Merge or rebase (-{}-rebase) local \& remote $\Delta$s:\\
 \code{git submodule update -{}-remote -{}-merge}\\
 \# Do same $\Delta$s across all SMs:\\
-\code{git submodule foreach \textquotesingle <cmd>\textquotesingle} \# cmd is bash\\
+\code{git submodule foreach \textquotesingle <cmd>\textquotesingle} \# cmd is bash
+\begin{comment}
 Handy configurations:
 %\begin{multicols}{2}
 {\scriptsize
@@ -30,16 +31,14 @@ Handy configurations:
 \item push.recurseSubmodules
 \end{itemize}}\ \\
 %\end{multicols}
+\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git rerere}
-Automatically resolve conflicts similar to ones you've fixed in previous merges. Rerere essentially caches pre- and post-merge diffs. \\
+\textit{Automatically resolve conflicts similar to ones you've fixed in previous merges. Rerere essentially caches pre- and post-merge diffs.}\\
 \code{git config -{}-global rerere.enabled true}\\
-\code{git rerere} \# direct invocation \\
-
-
-
+\code{git rerere} \# direct invocation
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,7 +51,7 @@ fsck & \\
 gc & manually invoke git garb. collector\\
 replace & $\Delta$ hashes for similar commits \\
 \end{tabular}}
-\\
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Plumbing}
@@ -77,11 +76,11 @@ update-index & $\Delta$ \& add to index from file or gitdb\\
 update-ref & set branch, HEAD, tag pointers\\
 verify-pack & show how git packs $\Delta$s into \say{packfiles}\\
 write-tree & create tree from index \\
-\end{tabular}} \\
+\end{tabular}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Refspec}
-Syntax is: [+]<src>:<dest>  Often, can use <refspec> instead of a <ref> like a branch, tag, etc.\\
-\ \\
+Syntax is: [+]<src>:<dest>  Often, can use <refspec> instead of a <ref> like a branch, tag, etc.
 
 
 

@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git status}
 \code{git status} \# show w-dir vs index \\
-\code{git status -s} \# short-hand view \\
+\code{git status -s} \# short-hand view 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,7 +11,7 @@
 \code{git diff} \# wd vs repo \\
 \code{git diff -{}-staged} \# idx vs repo \\
 \code{git diff master orgin/master} \# diff vs remote \\
-\code{git difftool} \# use a different diff \\
+\code{git difftool} \# use a different diff
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,17 +52,17 @@ Subselect \& bracked logs to show:\\
 \code{git log -{}-grep <pattrn>} \# matching pattern \\
 \code{git log -{}-S <str>} \# \say{pickaxe} option \\
 \code{git log brnA..brnB} \# only brnB, $\neg$ brnA \\
-\code{git log -{}-not brnA brnB} \# same as above \\
+\code{git log -{}-not brnA brnB} \# same as above
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git describe}
 Create version \# from latest tag:\\
-\code{git describe master} \# yields v1.6-<SHA1>\\
+\code{git describe master} \# yields v1.6-<SHA1>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git shortlog}
-\code{git shortlog master -{}-not v1.5} \# since 1.5\\
+\code{git shortlog master -{}-not v1.5} \# since 1.5
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git grep}
@@ -76,24 +76,26 @@ Create version \# from latest tag:\\
 \subsection*{git blame}
 \code{git blame <file>} \# show last $\Delta$s, authors\\
 \code{git blame -L 51,59 <file>} \# restrict to line \#s\\
-\code{git blame -C <file>} \# find $\Delta$-origins, other files\\
+\code{git blame -C <file>} \# find $\Delta$-origins, other files
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git reflog}
-\code{git reflog} \# local history of HEAD, branches \\
+\code{git reflog} \# local history of HEAD, branches 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git show}
+\textit{View a specific (older) version of a file:}\\
+\code{\href{https://stackoverflow.com/questions/338436/how-can-i-view-an-old-version-of-a-file-with-git}{git show REVISION:/path/to/file}}\\
 \code{git show master@\{5\}} \# using reflog labels \\
-\code{git show master@\{yesterday\}} \# special labels \\
+\code{git show master@\{yesterday\}} \# special labels 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git bisect}
 Iteratively search for breaking $\Delta$s by repeatedly resetting old commits. Is a commit good or bad?\\
-\code{git bisect start HEAD v1.0} \# from 1.0 to HEAD\\
+\code{git bisect start HEAD v1.0} \# from 1.0 to HEAD
 
 
 % \code{} \# \\

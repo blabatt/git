@@ -10,13 +10,13 @@ Use -{}-patch with: git [add|reset|checkout|stash]: \\
 \subsection*{git format-patch}
 Generate emailable patches, one per commit 
 past indicated branch (here origin/master): \\
-\code{git format-patch -M origin/master}\\
+\code{git format-patch -M origin/master}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git [send]}
 \code{cat *.patch | git imap-send }\\
-\code{git send-email *.patch}\\
+\code{git send-email *.patch}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,4 +24,4 @@ past indicated branch (here origin/master): \\
 {\footnotesize Use former if user submitted diff format \say{patch}; latter if user submitted format-patch patches.  Latter is better: already contains commit metadata.}\\
 \code{git apply /tmp/pname.patch}\\
 \code{git am pname.patch}\\
-\code{git am -3 pname.patch} \# attempt 3-way merge\\
+\code{git am -3 pname.patch} \# attempt 3-way merge

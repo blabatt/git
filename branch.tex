@@ -26,20 +26,21 @@ Types of history:
 \code{git branch <bname>} \# new branch @ HEAD \\
 \code{git branch -d <branch>} \# delete \\
 \# Set upstream branch:\\
-\code{git branch -u <remote>/<branch>} \\
+\code{git branch -u <remote>/<branch>}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git checkout}
-{\footnotesize
-A checkout moves HEAD to a named branch or SHA commit.  You cannot checkout a branch that clashes with changes in your working directory.}
-
+\textit{Moves HEAD to a named branch or SHA commit.  You cannot checkout a branch that clashes with changes in your working directory.}\\
 \code{git checkout <branch>} \# move HEAD \\
-\code{git checkout -b <bname>} \# create \& checkout \\
-\code{git switch -c <bname>} \# ibid, \href{https://stackoverflow.com/questions/3965676/why-did-my-git-repo-enter-a-detached-head-state}{new in v2.23}\\
+\code{git checkout -b <bname>} \# create \& checkout \\[2mm]
+\textit{To \href{https://stackoverflow.com/questions/215718/how-can-i-reset-or-revert-a-file-to-a-specific-revision}{restore older version} of just one file:}\\
+\code{git checkout [commit ID] -{}- path/to/file}\\
+\code{git \href{https://git-scm.com/docs/git-restore\#_examples}{restore} path/to/file \# ibid, \href{https://stackoverflow.com/questions/48508799/how-to-reset-all-files-from-working-directory-but-not-from-staging-area/57066072\#57066072}{new in v2.23}}\\[2mm]
 \# Create remote tracking branch:\\
 \code{git checkout -b <name> <remote>/<branch>} \\
-\code{git checkout -{}-track <remote>/<branch>} \\
+\code{git switch -c <bname>} \# \href{https://stackoverflow.com/questions/3965676/why-did-my-git-repo-enter-a-detached-head-state}{ibid}\\
+\code{git checkout -{}-track <remote>/<branch>}
 
 
 
@@ -49,7 +50,7 @@ A checkout moves HEAD to a named branch or SHA commit.  You cannot checkout a br
 A merge is three-way, generally, but a two-way \say{fast-forward} when <branch> is a direct ancestor of <into>.\\ 
 \code{git merge @\{u\}} \# shorthand for upstream \\
 \code{git mergetool} \# visual conflict-resolution \\
-\code{git merge -{}-squash brnA} \# single parent \\ 
+\code{git merge -{}-squash brnA} \# single parent
 
 
 
@@ -66,7 +67,7 @@ Only rebase if it\textquotesingle s the project's convention to do so and if you
 \# Rebase c onto a, holding off on b: \\
 \code{git rebase -{}-onto <a> <b> <c>} \\
 \# Split, squash, edit, reorder commits: \\
-\code{git rebase -i ...} \# \underline{i}nteractive \\
+\code{git rebase -i ...} \# \underline{i}nteractive
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,6 +75,6 @@ Only rebase if it\textquotesingle s the project's convention to do so and if you
 Finds common ancestor:\\
 \code{git merge-base brn master} \# find \\
 \code{git diff \$\{git merge-base brn master\}} \# use \\
-\code{git diff master...brn} \# shorthand for above \\
+\code{git diff master...brn} \# shorthand for above 
 
 %\code{} \# \\
