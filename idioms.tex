@@ -1,0 +1,17 @@
+\section{Idioms}
+
+\textit{Fetch all branches:}\\
+\code{git fetch -{}-all} \\[1mm]
+\textit{Setup new remote-tracking branch:}\\
+\code{git checkout -b <bname> <remote>/<rbrnch>} \\[1mm]
+\textit{Diff files in different \ul{b}ranches:} \\
+\code{git diff <b1> <b2> -{}- <path>} \\[1mm]
+\textit{Restore file from branch $to$ work-tree only:} \\
+\code{git restore -{}-source=<branch>} \\
+\code{\phantom{xxxx}-{}-worktree=<file>} \\[1mm]
+\textit{Ibid, but clobbers existing index and working tree:} \\
+\code{git checkout <brnch> -{}- <file>} \\[1mm]
+% \textit{:} \\
+% \code{git} \\[1mm]
+% \textit{:} \\
+% \code{git} \\[1mm]
