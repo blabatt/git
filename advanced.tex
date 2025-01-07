@@ -2,25 +2,30 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{git submodule}
+\textit{Useful for edited dependencies. Config stored in }\code{.gitmodules}.\\
 \# Add (remove \href{https://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule}{here}) a submodule to project:\\
 \code{git submodule add <url>} \# add submodule \\
 \# Getting a project with submodules:\\
 \code{git clone -{}-recurse-submodule <url>} \# init all\\
-\# ... or, if you forget to -{}-recurse-submodule, \\
-\# you can initialize each SM manually:\\
+\# alternatively, initialize each SM manually:\\
 \code{git submodule init} \# initialize single SM \\
 \code{git submodule update} \# fetch \& checkout \\
-\# where \say{update} is the usual wrapper:\\
 \code{cd <SM>; git fetch; git merge} \# $\equiv$ update \\
-\code{git diff -{}-submodule} \# show SM $\Delta$s \\
-\# Pull (or push) a repo with $\Delta$ed submodules:\\
-\code{git pull -{}-recurse-submodules} \# or use update \\
-\# Merge or rebase (-{}-rebase) local \& remote $\Delta$s:\\
+\code{git diff -{}-submodule} \# SM commit-hash $\Delta$s \\
+\# Pull all $\Delta$ed submodules:\\
+\code{git pull -{}-recurse-submodules} \# or instead \dots \\
+\# Pull (-{}-merge or -{}-rebase) remote $\Delta$s:\\
 \code{git submodule update -{}-remote -{}-merge}\\
 \# Do same $\Delta$s across all SMs:\\
-\code{git submodule foreach \textquotesingle <cmd>\textquotesingle} \# cmd is bash
+\code{git submodule foreach \textquotesingle <cmd>\textquotesingle} \# cmd is bash \\[1mm]
+\textit{Handy configurations. Run }\code{git config}\textit{ with:}\\
+\code{-{}-global diff.submodule log} \# show SM $\Delta$s \\
+\code{status.submodulesummary 1} \# show SM $\Delta$s \\
+\code{-f .gitmodules} \# $\Delta$ branch to track (\ul{f}orce) \\
+\code{\phantom{xxx}submodule.<SMname>.branch <bname>} 
+\textit{Handle un-pushed SM $\Delta$s (check or on-demand)}:\\
+\code{push.recurseSubmodules on-demand} \# push
 \begin{comment}
-Handy configurations:
 %\begin{multicols}{2}
 {\scriptsize
 \begin{itemize}
